@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A13AAA531EC0CA78000C4740 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13AAA521EC0CA78000C4740 /* LoadingCell.xib */; };
 		A1ECBBDB1EA5159700F213B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ECBBDA1EA5159700F213B0 /* AppDelegate.swift */; };
 		A1ECBBDD1EA5159700F213B0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ECBBDC1EA5159700F213B0 /* SearchViewController.swift */; };
 		A1ECBBE01EA5159700F213B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1ECBBDE1EA5159700F213B0 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A13AAA521EC0CA78000C4740 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		A1ECBBD71EA5159700F213B0 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1ECBBDA1EA5159700F213B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1ECBBDC1EA5159700F213B0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				A1ECBBDA1EA5159700F213B0 /* AppDelegate.swift */,
 				A1ECBBDC1EA5159700F213B0 /* SearchViewController.swift */,
+				A13AAA521EC0CA78000C4740 /* LoadingCell.xib */,
 				A1ECBBDE1EA5159700F213B0 /* Main.storyboard */,
 				A1ECBBE11EA5159700F213B0 /* Assets.xcassets */,
 				A1ECBBE31EA5159700F213B0 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				A1ECBBE51EA5159700F213B0 /* LaunchScreen.storyboard in Resources */,
 				A1ECBBE21EA5159700F213B0 /* Assets.xcassets in Resources */,
+				A13AAA531EC0CA78000C4740 /* LoadingCell.xib in Resources */,
 				A1ECBBEF1EA52A5B00F213B0 /* SearchResultCell.xib in Resources */,
 				A1ECBBF31EA54D6B00F213B0 /* NothingFoundCell.xib in Resources */,
 				A1ECBBE01EA5159700F213B0 /* Main.storyboard in Resources */,
@@ -313,6 +317,7 @@
 				A1ECBBEB1EA5159700F213B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

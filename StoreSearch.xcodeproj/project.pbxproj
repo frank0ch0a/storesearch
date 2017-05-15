@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10AF5131EC9FB30003665A3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AF5121EC9FB30003665A3 /* DetailViewController.swift */; };
+		A10AF5151ECA0047003665A3 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10AF5141ECA0047003665A3 /* DimmingPresentationController.swift */; };
 		A13AAA531EC0CA78000C4740 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13AAA521EC0CA78000C4740 /* LoadingCell.xib */; };
 		A13AAA551EC12CA7000C4740 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13AAA541EC12CA7000C4740 /* UIImageView+DownloadImage.swift */; };
 		A1ECBBDB1EA5159700F213B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1ECBBDA1EA5159700F213B0 /* AppDelegate.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10AF5121EC9FB30003665A3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
+		A10AF5141ECA0047003665A3 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		A13AAA521EC0CA78000C4740 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		A13AAA541EC12CA7000C4740 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		A1ECBBD71EA5159700F213B0 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,9 +68,11 @@
 		A1ECBBD91EA5159700F213B0 /* StoreSearch */ = {
 			isa = PBXGroup;
 			children = (
+				A10AF5121EC9FB30003665A3 /* DetailViewController.swift */,
 				A1ECBBDA1EA5159700F213B0 /* AppDelegate.swift */,
 				A1ECBBDC1EA5159700F213B0 /* SearchViewController.swift */,
 				A13AAA541EC12CA7000C4740 /* UIImageView+DownloadImage.swift */,
+				A10AF5141ECA0047003665A3 /* DimmingPresentationController.swift */,
 				A13AAA521EC0CA78000C4740 /* LoadingCell.xib */,
 				A1ECBBDE1EA5159700F213B0 /* Main.storyboard */,
 				A1ECBBE11EA5159700F213B0 /* Assets.xcassets */,
@@ -154,8 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1ECBBDD1EA5159700F213B0 /* SearchViewController.swift in Sources */,
+				A10AF5151ECA0047003665A3 /* DimmingPresentationController.swift in Sources */,
 				A1ECBBED1EA5237C00F213B0 /* SearchResult.swift in Sources */,
 				A1ECBBF11EA52DDA00F213B0 /* SearchResultCell.swift in Sources */,
+				A10AF5131EC9FB30003665A3 /* DetailViewController.swift in Sources */,
 				A1ECBBDB1EA5159700F213B0 /* AppDelegate.swift in Sources */,
 				A13AAA551EC12CA7000C4740 /* UIImageView+DownloadImage.swift in Sources */,
 			);

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,25 +36,51 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="XIs-VB-9PF"/>
                                 </connections>
                             </searchBar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZ1-cU-wFw">
+                                <rect key="frame" x="0.0" y="65" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="OPZ-Q6-Ymq">
+                                        <nil key="title"/>
+                                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="t7O-yT-1o8">
+                                            <rect key="frame" x="10" y="7.5" width="300" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="All"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="E-books"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentedChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="IgI-yg-e5z"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qpr-Zm-teU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4x5-xH-yVS"/>
+                            <constraint firstItem="WZ1-cU-wFw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6f3-sH-eSD"/>
                             <constraint firstItem="Xml-LW-ufJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="8ep-Sk-dzF"/>
                             <constraint firstAttribute="trailing" secondItem="qpr-Zm-teU" secondAttribute="trailing" id="I4X-LY-GxB"/>
+                            <constraint firstAttribute="trailing" secondItem="WZ1-cU-wFw" secondAttribute="trailing" id="eyt-dW-H9N"/>
                             <constraint firstAttribute="trailing" secondItem="Xml-LW-ufJ" secondAttribute="trailing" id="f8R-CC-rCG"/>
                             <constraint firstItem="qpr-Zm-teU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nFC-2H-1bk"/>
+                            <constraint firstItem="WZ1-cU-wFw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="65" id="nfK-7U-cki"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qpr-Zm-teU" secondAttribute="bottom" id="oOa-jV-O65"/>
                             <constraint firstItem="Xml-LW-ufJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tlI-Yv-4di"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Xml-LW-ufJ" id="AO0-wv-CfK"/>
+                        <outlet property="segmentedControl" destination="t7O-yT-1o8" id="EtH-tR-s6r"/>
                         <outlet property="tableView" destination="qpr-Zm-teU" id="eze-6i-NC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="92" y="121"/>
         </scene>
     </scenes>
 </document>

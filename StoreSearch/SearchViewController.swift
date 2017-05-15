@@ -12,9 +12,13 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     var searchResults: [SearchResult] = []
     var hasSearched = false
     var isLoading = false
+    var dataTask: URLSessionDataTask?
     
     struct TableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
@@ -24,7 +28,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 108, left: 0, bottom: 0, right: 0)
         
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
@@ -46,9 +50,20 @@ class SearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func iTunesURL(searchText: String) -> URL {
+    func iTunesURL(searchText: String, category: Int) -> URL {
+        
+        let entityName: String
+        
+        switch category {
+        case 1: entityName = "musicTrack"
+        case 2: entityName = "software"
+        case 3: entityName = "ebook"
+        default: entityName = ""
+            
+        }
+        
         let escapedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let urlString = String(format:"https://itunes.apple.com/search?term=%@&limit=200", escapedSearchText)
+        let urlString = String(format:"https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedSearchText,entityName)
         let url = URL(string: urlString)
         return url!
     }
@@ -74,6 +89,12 @@ class SearchViewController: UIViewController {
             print("JSON Error: \(error)")
             return nil
         }
+    }
+    
+    @IBAction func segmentedChanged(_ sender: UISegmentedControl) {
+        
+            performSearch()
+       
     }
     
     func parse(dictionary: [String: Any]) -> [SearchResult] {
@@ -202,12 +223,19 @@ class SearchViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSearch()
+    }
+    func performSearch() {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
+            dataTask?.cancel()
             isLoading = true
             tableView.reloadData()
             
@@ -215,15 +243,17 @@ extension SearchViewController: UISearchBarDelegate {
             searchResults = []
             
             // 1
-            let url = iTunesURL(searchText: searchBar.text!)
+            let url = self.iTunesURL(searchText: searchBar.text!,
+                                     category: segmentedControl.selectedSegmentIndex)
             // 2
             let session = URLSession.shared
             // 3
-            let dataTask = session.dataTask(with: url, completionHandler: {
+            dataTask = session.dataTask(with: url, completionHandler: {
                 data, response, error in
                 // 4
-                if let error = error {
-                    print("Failure! \(error)")
+                if let error = error as NSError?, error.code == -999 {
+                    
+                   return
                 }else if  let httpResponse = response as? HTTPURLResponse,
                 httpResponse.statusCode == 200 {
                     
@@ -247,7 +277,7 @@ extension SearchViewController: UISearchBarDelegate {
                 }
             })
             // 5
-            dataTask.resume()
+            dataTask?.resume()
         
         }
     }
@@ -295,31 +325,12 @@ extension SearchViewController: UITableViewDataSource {
             
             let searchResult = searchResults[indexPath.row]
             cell.nameLabel.text = searchResult.name
-            
-            if searchResult.artistName.isEmpty {
-                cell.artistNameLabel.text = "Unknown"
-            } else {
-                cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, kindForDisplay(searchResult.kind))
-            }
+          cell.configure(for: searchResult)
             return cell
         }
     }
     
-    func kindForDisplay(_ kind: String) -> String {
-        switch kind {
-        case "album": return "Album"
-        case "audiobook": return "Audio Book"
-        case "book": return "Book"
-        case "ebook": return "E-Book"
-        case "feature-movie": return "Movie"
-        case "music-video": return "Music Video"
-        case "podcast": return "Podcast"
-        case "software": return "App"
-        case "song": return "Song"
-        case "tv-episode": return "TV Episode"
-        default: return kind
-        }
-    }
+    
 }
 
 extension SearchViewController: UITableViewDelegate {
